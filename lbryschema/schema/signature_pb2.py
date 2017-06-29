@@ -13,15 +13,16 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import certificate_pb2
+import certificate_pb2 as certificate__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='signature.proto',
   package='',
+  syntax='proto2',
   serialized_pb=_b('\n\x0fsignature.proto\x1a\x11\x63\x65rtificate.proto\"\xa7\x01\n\tSignature\x12#\n\x07version\x18\x01 \x02(\x0e\x32\x12.Signature.Version\x12\x1f\n\rsignatureType\x18\x02 \x02(\x0e\x32\x08.KeyType\x12\x11\n\tsignature\x18\x03 \x02(\x0c\x12\x15\n\rcertificateId\x18\x04 \x02(\x0c\"*\n\x07Version\x12\x13\n\x0fUNKNOWN_VERSION\x10\x00\x12\n\n\x06_0_0_1\x10\x01')
   ,
-  dependencies=[certificate_pb2.DESCRIPTOR,])
+  dependencies=[certificate__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -93,6 +94,7 @@ _SIGNATURE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -101,7 +103,7 @@ _SIGNATURE = _descriptor.Descriptor(
 )
 
 _SIGNATURE.fields_by_name['version'].enum_type = _SIGNATURE_VERSION
-_SIGNATURE.fields_by_name['signatureType'].enum_type = certificate_pb2._KEYTYPE
+_SIGNATURE.fields_by_name['signatureType'].enum_type = certificate__pb2._KEYTYPE
 _SIGNATURE_VERSION.containing_type = _SIGNATURE
 DESCRIPTOR.message_types_by_name['Signature'] = _SIGNATURE
 

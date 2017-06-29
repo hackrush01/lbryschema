@@ -54,8 +54,15 @@ CLAIM_TYPE_NAMES = {
 LBRY_SD_HASH = "lbry_sd_hash"
 LBRY_SD_HASH_LENGTH = 48
 
+BTIH = "btih"
+BTIH_LENGTH = 40
+
+HTTP = "http"
+
 SOURCE_TYPES = {
-    LBRY_SD_HASH: 1
+    LBRY_SD_HASH: 1,
+    BTIH: 2,
+    HTTP: 3
 }
 
 NIST256p = "NIST256p"

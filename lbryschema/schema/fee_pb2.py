@@ -18,6 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='fee.proto',
   package='',
+  syntax='proto2',
   serialized_pb=_b('\n\tfee.proto\"\xcf\x01\n\x03\x46\x65\x65\x12\x1d\n\x07version\x18\x01 \x02(\x0e\x32\x0c.Fee.Version\x12\x1f\n\x08\x63urrency\x18\x02 \x02(\x0e\x32\r.Fee.Currency\x12\x0f\n\x07\x61\x64\x64ress\x18\x03 \x02(\x0c\x12\x0e\n\x06\x61mount\x18\x04 \x02(\x02\"*\n\x07Version\x12\x13\n\x0fUNKNOWN_VERSION\x10\x00\x12\n\n\x06_0_0_1\x10\x01\";\n\x08\x43urrency\x12\x14\n\x10UNKNOWN_CURRENCY\x10\x00\x12\x07\n\x03LBC\x10\x01\x12\x07\n\x03\x42TC\x10\x02\x12\x07\n\x03USD\x10\x03')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -108,7 +109,7 @@ _FEE = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='amount', full_name='Fee.amount', index=3,
       number=4, type=2, cpp_type=6, label=2,
-      has_default_value=False, default_value=0,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -122,6 +123,7 @@ _FEE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],

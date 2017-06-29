@@ -13,17 +13,18 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import stream_pb2
-import certificate_pb2
-import signature_pb2
+import stream_pb2 as stream__pb2
+import certificate_pb2 as certificate__pb2
+import signature_pb2 as signature__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='claim.proto',
   package='',
+  syntax='proto2',
   serialized_pb=_b('\n\x0b\x63laim.proto\x1a\x0cstream.proto\x1a\x11\x63\x65rtificate.proto\x1a\x0fsignature.proto\"\xa7\x02\n\x05\x43laim\x12\x1f\n\x07version\x18\x01 \x02(\x0e\x32\x0e.Claim.Version\x12#\n\tclaimType\x18\x02 \x02(\x0e\x32\x10.Claim.ClaimType\x12\x17\n\x06stream\x18\x03 \x01(\x0b\x32\x07.Stream\x12!\n\x0b\x63\x65rtificate\x18\x04 \x01(\x0b\x32\x0c.Certificate\x12&\n\x12publisherSignature\x18\x05 \x01(\x0b\x32\n.Signature\"*\n\x07Version\x12\x13\n\x0fUNKNOWN_VERSION\x10\x00\x12\n\n\x06_0_0_1\x10\x01\"H\n\tClaimType\x12\x16\n\x12UNKNOWN_CLAIM_TYPE\x10\x00\x12\x0e\n\nstreamType\x10\x01\x12\x13\n\x0f\x63\x65rtificateType\x10\x02')
   ,
-  dependencies=[stream_pb2.DESCRIPTOR,certificate_pb2.DESCRIPTOR,signature_pb2.DESCRIPTOR,])
+  dependencies=[stream__pb2.DESCRIPTOR,certificate__pb2.DESCRIPTOR,signature__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -129,6 +130,7 @@ _CLAIM = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -138,9 +140,9 @@ _CLAIM = _descriptor.Descriptor(
 
 _CLAIM.fields_by_name['version'].enum_type = _CLAIM_VERSION
 _CLAIM.fields_by_name['claimType'].enum_type = _CLAIM_CLAIMTYPE
-_CLAIM.fields_by_name['stream'].message_type = stream_pb2._STREAM
-_CLAIM.fields_by_name['certificate'].message_type = certificate_pb2._CERTIFICATE
-_CLAIM.fields_by_name['publisherSignature'].message_type = signature_pb2._SIGNATURE
+_CLAIM.fields_by_name['stream'].message_type = stream__pb2._STREAM
+_CLAIM.fields_by_name['certificate'].message_type = certificate__pb2._CERTIFICATE
+_CLAIM.fields_by_name['publisherSignature'].message_type = signature__pb2._SIGNATURE
 _CLAIM_VERSION.containing_type = _CLAIM
 _CLAIM_CLAIMTYPE.containing_type = _CLAIM
 DESCRIPTOR.message_types_by_name['Claim'] = _CLAIM

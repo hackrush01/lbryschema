@@ -19,6 +19,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='certificate.proto',
   package='',
+  syntax='proto2',
   serialized_pb=_b('\n\x11\x63\x65rtificate.proto\"\x8e\x01\n\x0b\x43\x65rtificate\x12%\n\x07version\x18\x01 \x02(\x0e\x32\x14.Certificate.Version\x12\x19\n\x07keyType\x18\x02 \x02(\x0e\x32\x08.KeyType\x12\x11\n\tpublicKey\x18\x04 \x02(\x0c\"*\n\x07Version\x12\x13\n\x0fUNKNOWN_VERSION\x10\x00\x12\n\n\x06_0_0_1\x10\x01*Q\n\x07KeyType\x12\x1b\n\x17UNKNOWN_PUBLIC_KEY_TYPE\x10\x00\x12\x0c\n\x08NIST256p\x10\x01\x12\x0c\n\x08NIST384p\x10\x02\x12\r\n\tSECP256k1\x10\x03')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -120,6 +121,7 @@ _CERTIFICATE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],

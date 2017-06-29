@@ -284,7 +284,7 @@ class TestMetadata(UnitTest):
         claim = deepcopy(example_010)
         sd_hash = claim['stream']['source']['source'][:-2]
         claim['stream']['source']['source'] = sd_hash
-        self.assertRaises(AssertionError, ClaimDict.load_dict, claim)
+        self.assertRaises(Exception, ClaimDict.load_dict, claim)
 
 
 class TestSmartDecode(UnitTest):

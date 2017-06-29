@@ -18,6 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='source.proto',
   package='',
+  syntax='proto2',
   serialized_pb=_b('\n\x0csource.proto\"\xde\x01\n\x06Source\x12 \n\x07version\x18\x01 \x02(\x0e\x32\x0f.Source.Version\x12\'\n\nsourceType\x18\x02 \x02(\x0e\x32\x13.Source.SourceTypes\x12\x0e\n\x06source\x18\x03 \x02(\x0c\x12\x13\n\x0b\x63ontentType\x18\x04 \x02(\t\"*\n\x07Version\x12\x13\n\x0fUNKNOWN_VERSION\x10\x00\x12\n\n\x06_0_0_1\x10\x01\"8\n\x0bSourceTypes\x12\x17\n\x13UNKNOWN_SOURCE_TYPE\x10\x00\x12\x10\n\x0clbry_sd_hash\x10\x01')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -114,6 +115,7 @@ _SOURCE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
