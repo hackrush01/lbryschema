@@ -102,7 +102,8 @@ class TestURIParser(UnitTest):
                                       test_string)
                     # string -> URI -> dict -> URI -> string
                     uri_dict = URI.from_uri_string(test_string).to_dict()
-                    self.assertEquals(URI.from_dict(uri_dict).to_uri_string(), test_string, test_string)
+                    self.assertEquals(URI.from_dict(uri_dict).to_uri_string(), test_string,
+                                      test_string)
                     # URI -> dict -> URI -> string
                     self.assertEquals(URI.from_dict(expected_uri_obj.to_dict()).to_uri_string(),
                                       test_string, test_string)
@@ -139,6 +140,38 @@ class TestEncoderAndDecoder(UnitTest):
     def test_stream_is_not_certificate(self):
         deserialized_claim = ClaimDict.deserialize(example_010_serialized.decode('hex'))
         self.assertEquals(deserialized_claim.is_certificate, False)
+
+
+class TestISO639(UnitTest):
+    def test_alpha2(self):
+        prefixes = ['en', 'aa', 'ab', 'ae', 'af', 'ak', 'am', 'an', 'ar', 'as', 'av', 'ay', 'az',
+                    'ba', 'be', 'bg', 'bh', 'bi', 'bm', 'bn', 'bo', 'br', 'bs', 'ca', 'ce', 'ch',
+                    'co', 'cr', 'cs', 'cu', 'cv', 'cy', 'da', 'de', 'dv', 'dz', 'ee', 'el', 'eo',
+                    'es', 'et', 'eu', 'fa', 'ff', 'fi', 'fj', 'fo', 'fr', 'fy', 'ga', 'gd', 'gl',
+                    'gn', 'gu', 'gv', 'ha', 'he', 'hi', 'ho', 'hr', 'ht', 'hu', 'hy', 'hz', 'ia',
+                    'id', 'ie', 'ig', 'ii', 'ik', 'io', 'is', 'it', 'iu', 'ja', 'jv', 'ka', 'kg',
+                    'ki', 'kj', 'kk', 'kl', 'km', 'kn', 'ko', 'kr', 'ks', 'ku', 'kv', 'kw', 'ky',
+                    'la', 'lb', 'lg', 'li', 'ln', 'lo', 'lt', 'lu', 'lv', 'mg', 'mh', 'mi', 'mk',
+                    'ml', 'mn', 'mr', 'ms', 'mt', 'my', 'na', 'nb', 'nd', 'ne', 'ng', 'nl', 'nn',
+                    'no', 'nr', 'nv', 'ny', 'oc', 'oj', 'om', 'or', 'os', 'pa', 'pi', 'pl', 'ps',
+                    'pt', 'qu', 'rm', 'rn', 'ro', 'ru', 'rw', 'sa', 'sc', 'sd', 'se', 'sg', 'si',
+                    'sk', 'sl', 'sm', 'sn', 'so', 'sq', 'sr', 'ss', 'st', 'su', 'sv', 'sw', 'ta',
+                    'te', 'tg', 'th', 'ti', 'tk', 'tl', 'tn', 'to', 'tr', 'ts', 'tt', 'tw', 'ty',
+                    'ug', 'uk', 'ur', 'uz', 've', 'vi', 'vo', 'wa', 'wo', 'xh', 'yi', 'yo', 'za',
+                    'zh', 'zu']
+        for prefix in prefixes:
+            metadata = deepcopy(example_010)
+            metadata['stream']['metadata']['language'] = prefix
+            claim = ClaimDict.load_dict(metadata)
+            serialized = claim.serialized
+            self.assertDictEqual(metadata, dict(ClaimDict.deserialize(serialized).claim_dict))
+
+    def test_fake_alpha2(self):
+        fake_codes = ["bb", "zz"]
+        for fake_code in fake_codes:
+            metadata = deepcopy(example_010)
+            metadata['stream']['metadata']['language'] = fake_code
+            self.assertRaises(DecodeError, ClaimDict.load_dict, metadata)
 
 
 class TestMigration(UnitTest):
@@ -235,7 +268,8 @@ class TestSECP256k1Signatures(UnitTest):
     def test_validate_ecdsa_signature(self):
         cert = ClaimDict.generate_certificate(secp256k1_private_key, curve=SECP256k1)
         self.assertDictEqual(cert.claim_dict, secp256k1_cert)
-        signed = ClaimDict.load_dict(example_010).sign(secp256k1_private_key, claim_address_2, claim_id_1, curve=SECP256k1)
+        signed = ClaimDict.load_dict(example_010).sign(secp256k1_private_key, claim_address_2,
+                                                       claim_id_1, curve=SECP256k1)
         self.assertDictEqual(signed.claim_dict, claim_010_signed_secp256k1)
         signed_copy = ClaimDict.load_protobuf(signed.protobuf)
         self.assertEquals(signed_copy.validate_signature(claim_address_2, cert), True)
@@ -249,7 +283,8 @@ class TestSECP256k1Signatures(UnitTest):
     def test_fail_to_validate_with_no_claim_address(self):
         cert = ClaimDict.generate_certificate(secp256k1_private_key, curve=SECP256k1)
         self.assertDictEqual(cert.claim_dict, secp256k1_cert)
-        signed = ClaimDict.load_dict(example_010).sign(secp256k1_private_key, claim_address_2, claim_id_1, curve=SECP256k1)
+        signed = ClaimDict.load_dict(example_010).sign(secp256k1_private_key, claim_address_2,
+                                                       claim_id_1, curve=SECP256k1)
         self.assertDictEqual(signed.claim_dict, claim_010_signed_secp256k1)
         signed_copy = ClaimDict.load_protobuf(signed.protobuf)
         self.assertRaises(Exception, signed_copy.validate_signature, None, cert)
@@ -300,9 +335,6 @@ class TestSmartDecode(UnitTest):
 
         with self.assertRaises(DecodeError):
             smart_decode("{'bogus_dict':1}")
-
-
-
 
 
 if __name__ == '__main__':
