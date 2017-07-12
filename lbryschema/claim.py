@@ -130,14 +130,15 @@ class ClaimDict(OrderedDict):
     @classmethod
     def load_protobuf(cls, protobuf_claim):
         """Load ClaimDict from a protobuf Claim message"""
-
         return cls.load_protobuf_dict(json.loads(json_format.MessageToJson(protobuf_claim, True)))
 
     @classmethod
     def load_dict(cls, claim_dict):
         """Load ClaimDict from a dictionary with hex and base58 encoded bytes"""
-
-        return cls.load_protobuf(cls(decode_fields(claim_dict)).protobuf)
+        try:
+            return cls.load_protobuf(cls(decode_fields(claim_dict)).protobuf)
+        except json_format.ParseError as err:
+            raise DecodeError(err.message)
 
     @classmethod
     def deserialize(cls, serialized):
