@@ -12,7 +12,7 @@ labeled as 2.7.1. Subsequent releases will follow
   *
 
 ### Fixed
-  *
+  * Fix https://github.com/lbryio/lbryschema/issues/8
   *
 
 ### Deprecated
@@ -24,7 +24,7 @@ labeled as 2.7.1. Subsequent releases will follow
   *
 
 ### Added
-  *
+  * Add support for ISO-639-alpha2 language prefixes in claim metadata
   *
 
 ### Removed
