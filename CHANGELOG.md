@@ -20,7 +20,7 @@ labeled as 2.7.1. Subsequent releases will follow
   *
 
 ### Changed
-  *
+  * Changed minimum length for channel name from 4 to 1
   *
 
 ### Added
